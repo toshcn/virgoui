@@ -1,0 +1,50 @@
+@import "colorPalette";
+
+// color palettes
+@blue-5: color(~`colorPalette("@{blue-6}", 5)`);
+@blue-6: #2b85e4;
+@blue-7: color(~`colorPalette("@{blue-6}", 7)`);
+
+
+@green-5: color(~`colorPalette("@{green-6}", 5)`);
+@green-6: #339933;
+@green-7: color(~`colorPalette("@{green-6}", 7)`);
+
+
+@red-5: color(~`colorPalette("@{red-6}", 5)`);
+@red-6: #cc3333;
+@red-7: color(~`colorPalette("@{red-6}", 7)`);
+
+
+@orange-5: color(~`colorPalette("@{orange-6}", 5)`);
+@orange-6: #ff9900;
+@orange-7: color(~`colorPalette("@{orange-6}", 7)`);
+
+
+@yellow-5: color(~`colorPalette("@{yellow-6}", 5)`);
+@yellow-6: #ffdd00;
+@yellow-7: color(~`colorPalette("@{yellow-6}", 7)`);
+
+
+@gold-5: color(~`colorPalette("@{gold-6}", 5)`);
+@gold-6: #ffaa00;
+@gold-7: color(~`colorPalette("@{gold-6}", 7)`);
+
+
+// Background color for `<body>`
+@body-background        : #fff;
+// Base background color for most components
+@component-background   : #fff;
+@font-family-no-number  : -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif;
+@font-family            : "Helvetica Neue For Number", @font-family-no-number;
+@code-family            : Consolas, Menlo, Courier, monospace;
+@text-color             : fade(#000, 65%);
+@text-color-secondary   : fade(#000, 45%);
+@text-color-dark        : fade(#fff,85%);
+@text-color-secondary-dark: fade(#fff, 65%);
+@font-size-base         : 14px;
+@font-size-lg           : @font-size-base + 2px;
+@font-size-sm           : 12px;
+@line-height-base       : 1.5;
+@border-radius-base     : 4px;
+@border-radius-sm       : 2px;
