@@ -26,20 +26,18 @@ li + li { border-left: solid 1px #bbb; padding-left: 10px; margin-left: 10px; }
 </template>
 
 <script>
-    module.exports = {
-        data: function() {
-            return {
+  module.exports = {
+    data: function () {
+      return {}
+    },
+    mounted: function () {
 
-            }
-        },
-        mounted: function() {
+    },
+    beforeDestroy: function () {
 
-        },
-        beforeDestroy: function() {
+    },
+    methods: {
 
-        },
-        methods: {
-
-        }
     }
+}
 </script>

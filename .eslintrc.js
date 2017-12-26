@@ -20,6 +20,14 @@ module.exports = {
     // allow async-await
     'generator-star-spacing': 'off',
     // allow debugger during development
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
+    // 语句强制分号结尾
+    'semi': [0, 'always'],
+    // 禁止比较时使用NaN，只能用isNaN()
+    'use-isnan': 2,
+    // 不能用多余的空格
+    'no-multi-spaces': 2,
+    // 禁止不必要的bool转换
+    'no-extra-boolean-cast': 0,
   }
 }

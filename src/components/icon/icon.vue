@@ -10,24 +10,25 @@
       type: String,
       size: [String, Number],
       color: String,
-      spin: [String, Boolean]
+      spin: [String, Number, Boolean]
     },
     computed: {
       classObject: function () {
         return {
           [`${prefixCls}`]: true,
-          'vgo-icon-spin': !!this.spin || this.type === 'spinner',
+          [`${prefixCls}-spin`]: !!this.spin,
           [`${prefixCls}-${this.type}`]: true
-        }
+        };
       },
       styleObject: function () {
         let styles = {};
         if (this.color) {
           styles['color'] = this.color;
         }
-        if (this.fontSize) {
+        if (this.size) {
           styles['font-size'] = `${this.size}px`;
         }
+        return styles;
       }
     }
   }
