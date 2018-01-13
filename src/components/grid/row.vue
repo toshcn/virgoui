@@ -5,7 +5,7 @@
 </template>
 
 <script>
-  import { inArray, findComponentsDownward } from '../../utils/helper';
+  import { inArray, findChildrenComponents } from '../../util/helper';
   import enquire from 'enquire.js';
 
   const prefixCls = 'vgo-row';
@@ -16,7 +16,7 @@
     md: '(min-width: 768px)',
     lg: '(min-width: 992px)',
     xl: '(min-width: 1200px)',
-    xxl: '(min-width: 1600px)',
+    xxl: '(min-width: 1600px)'
   };
   var screens = {};
   export default {
@@ -45,10 +45,10 @@
     computed: {
       classObject () {
         return {
-          [`${prefixCls}`]: !this.type,
+          [`${prefixCls}`]: this.type,
           [`${prefixCls}-${this.type}`]: this.type,
           [`${prefixCls}-${this.type}-${this.justify}`]: this.type && this.justify,
-          [`${prefixCls}-${this.type}-${this.align}`]: this.type && this.align,
+          [`${prefixCls}-${this.type}-${this.align}`]: this.type && this.align
         }
       },
       styleObject () {
@@ -56,15 +56,14 @@
         if (gutter !== 0) {
           return {
             marginLeft: gutter / -2 + 'px',
-            marginRight: gutter / -2 + 'px',
-            ...this.styleObject
+            marginRight: gutter / -2 + 'px'
           }
         }
-        return this.styleObject;
+        return {};
       }
     },
     methods: {
-      getGutter() {
+      getGutter () {
         if (typeof this.gutter === 'object') {
           for (let i = 0; i <= responsiveArray.length; i++) {
             const breakpoint = responsiveArray[i];
@@ -74,6 +73,19 @@
           }
         }
         return this.gutter;
+      },
+      updateGutter (val) {
+        const cols = findChildrenComponents(this, 'Col');
+        if (cols.length) {
+          cols.forEach((child) => {
+            if (val > 0) child.gutter = val;
+          });
+        }
+      }
+    },
+    watch: {
+      gutter (val) {
+        this.updateGutter(val);
       }
     },
     beforeMount () {
@@ -85,7 +97,7 @@
             }
             this.screens = {
               ...this.screens,
-              [screen]: true,
+              [screen]: true
             };
           },
           unmatch: () => {
@@ -94,17 +106,17 @@
             }
             this.screens = {
               ...this.screens,
-              [screen]: false,
+              [screen]: false
             };
           },
           // Keep a empty destory to avoid triggering unmatch when unregister
-          destroy() {},
-        },
+          destroy () {}
+        }
       ));
     },
     beforeDestroy () {
       Object.keys(responsiveMap)
         .map((screen) => enquire.unregister(responsiveMap[screen]));
-    },
+    }
   }
 </script>

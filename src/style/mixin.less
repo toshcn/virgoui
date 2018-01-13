@@ -1,0 +1,33 @@
+@import "./mixins/index";
+
+// mixins for grid system
+// ------------------------
+.make-row(@gutter: @grid-gutter-width) {
+  position: relative;
+  margin-left: (@gutter / -2);
+  margin-right: (@gutter / -2);
+  height: auto;
+  .clearfix;
+}
+
+
+.make-grid-columns() {
+  .col(@index) {
+    @item: ~".@{css-prefix}-col-@{index}, .@{css-prefix}-col-xs-@{index}, .@{css-prefix}-col-sm-@{index}, .@{css-prefix}-col-md-@{index}, .@{css-prefix}-col-lg-@{index}";
+    .col((@index + 1), @item);
+  }
+  .col(@index, @list) when (@index =< @grid-columns) {
+    @item: ~".@{css-prefix}-col-@{index}, .@{css-prefix}-col-xs-@{index}, .@{css-prefix}-col-sm-@{index}, .@{css-prefix}-col-md-@{index}, .@{css-prefix}-col-lg-@{index}";
+    .col((@index + 1), ~"@{list}, @{item}");
+  }
+  .col(@index, @list) when (@index > @grid-columns) {
+    @{list} {
+      position: relative;
+      // Prevent columns from collapsing when empty
+      min-height: 1px;
+      padding-left: (@grid-gutter-width / 2);
+      padding-right: (@grid-gutter-width / 2);
+    }
+  }
+  .col(1);
+}

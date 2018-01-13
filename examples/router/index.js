@@ -7,6 +7,7 @@ Vue.use(Router);
 Vue.use(Virgo);
 
 const Icon = () => import('./Icon.vue');
+const Grid = () => import('./Grid.vue');
 
 export default new Router({
   routes: [
@@ -19,6 +20,11 @@ export default new Router({
       path: '/icon',
       name: 'Icon',
       component: Icon
+    },
+    {
+      path: '/grid',
+      name: 'Grid',
+      component: Grid
     }
   ]
 });

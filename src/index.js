@@ -1,10 +1,14 @@
 // es6 polyfill
 import 'core-js/fn/array/find';
 import 'core-js/fn/array/find-index';
+
 import Icon from './components/icon';
+import { Row, Col } from './components/grid';
 
 const components = {
-  Icon
+  Icon,
+  Row,
+  Col
 };
 
 const virgo = {

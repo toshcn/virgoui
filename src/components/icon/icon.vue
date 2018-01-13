@@ -13,14 +13,14 @@
       spin: [String, Number, Boolean]
     },
     computed: {
-      classObject: function () {
+      classObject () {
         return {
           [`${prefixCls}`]: true,
           [`${prefixCls}-spin`]: !!this.spin,
           [`${prefixCls}-${this.type}`]: true
         };
       },
-      styleObject: function () {
+      styleObject () {
         let styles = {};
         if (this.color) {
           styles['color'] = this.color;

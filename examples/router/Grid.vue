@@ -1,7 +1,8 @@
 <template>
     <div class="text-center">
-        <Icon type="spinner" :spin="0" size="18" color="#336699" :style="{width:'100%'}" />
-        <Icon type="home" />
+        <Row type="flex">
+            <Col >col-4</Col>
+        </Row>
     </div>
 </template>
 <script>
