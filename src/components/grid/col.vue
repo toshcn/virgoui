@@ -8,7 +8,7 @@
   import { findParentComponent } from '../../util/helper';
   const prefixCls = 'vgo-col';
   export default {
-    name: 'Row',
+    name: 'Col',
     props: {
       span: {
         type: [Number, String],
@@ -31,15 +31,18 @@
     },
     computed: {
       classObject () {
-        let classList = {
-          [`${prefixCls}`]: true,
-          [`${prefixCls}-${this.span}`]: this.span,
-          [`${prefixCls}-order-${this.order}`]: this.order,
-          [`${prefixCls}-offset-${this.offset}`]: this.offset,
-          [`${prefixCls}-push-${this.push}`]: this.push,
-          [`${prefixCls}-pull-${this.pull}`]: this.pull,
-          [`${this.className}`]: !!this.className
-        };
+        let classList = [
+          `${prefixCls}`,
+          {
+            [`${prefixCls}-${this.span}`]: this.span,
+            [`${prefixCls}-order-${this.order}`]: this.order,
+            [`${prefixCls}-offset-${this.offset}`]: this.offset,
+            [`${prefixCls}-push-${this.push}`]: this.push,
+            [`${prefixCls}-pull-${this.pull}`]: this.pull,
+            [`${this.className}`]: !!this.className
+          }
+        ];
+
         ['xs', 'sm', 'md', 'lg'].forEach(size => {
           if (typeof this[size] === 'number') {
             classList.push(`${prefixCls}-span-${size}-${this[size]}`);
@@ -61,8 +64,8 @@
         let gutter = this.gutter;
         if (gutter !== 0) {
           return {
-            marginLeft: gutter / -2 + 'px',
-            marginRight: gutter / -2 + 'px'
+            marginLeft: gutter / 2 + 'px',
+            marginRight: gutter / 2 + 'px'
           }
         }
         return {};

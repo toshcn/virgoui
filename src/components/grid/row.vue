@@ -18,7 +18,7 @@
     xl: '(min-width: 1200px)',
     xxl: '(min-width: 1600px)'
   };
-  var screens = {};
+
   export default {
     name: 'Row',
     props: {
@@ -101,7 +101,7 @@
             };
           },
           unmatch: () => {
-            if (typeof this.props.gutter !== 'object') {
+            if (typeof this.gutter !== 'object') {
               return;
             }
             this.screens = {
